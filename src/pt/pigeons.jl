@@ -75,19 +75,19 @@ Call [`sample_iid!`](@ref) or [`step!()`](@ref) on
 each chain (depending if it is a reference or not 
 respectively). 
 
-Uses `@threads` to parallelize across threads. 
+Uses `Polyester.@batch` to parallelize across threads. 
 This is safe by the contract described in 
 [`sample_iid!()`](@ref) and [`step!()`](@ref).
 """
 explore!(pt, explorer, multithreaded_flag::Val{true}) =
-    @threads for replica in locals(pt.replicas)
+    Polyester.@batch for replica in locals(pt.replicas)
         explore!(pt, replica, explorer)
     end
 
 """
 $SIGNATURES
 
-The `@threads` macro brings a large overhead even 
+The `Polyester.@batch` macro brings a large overhead even 
 when `Threads.nthreads == 1`, so a separate method 
 is used for the single thread mode.
 """
