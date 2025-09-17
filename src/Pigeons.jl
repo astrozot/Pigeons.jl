@@ -45,6 +45,7 @@ import OnlineStatsBase: _fit!, value, _merge!
 import Random.rand!
 import Serialization: serialize, deserialize
 import Statistics: mean, var
+import Polyester.@batch
 
 const use_auto_exec_folder = "use_auto_exec_folder"
 
