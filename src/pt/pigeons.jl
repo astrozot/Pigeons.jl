@@ -80,7 +80,7 @@ This is safe by the contract described in
 [`sample_iid!()`](@ref) and [`step!()`](@ref).
 """
 explore!(pt, explorer, multithreaded_flag::Val{true}) =
-    Polyester.@batch for replica in locals(pt.replicas)
+    @batch for replica in locals(pt.replicas)
         explore!(pt, replica, explorer)
     end
 
